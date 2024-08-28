@@ -33,6 +33,9 @@
                 android:layout_height="wrap_content"
                 android:padding="@dimen/pading"
                 android:layout_marginEnd="@dimen/margin"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:lines="1"
                 android:hint="Buscar..."
                 android:layout_toStartOf="@+id/btnSearch"
                 />
@@ -49,22 +52,15 @@
 
     </androidx.cardview.widget.CardView>
 
-    <Button
-        android:id="@+id/btnShowHistory"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Historial"
-        android:layout_below="@+id/headerSearch"
-        />
+
 
     <TextView
         android:id="@+id/txtvNameSearch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="@dimen/textTitle"
-        android:padding="@dimen/pading"
         android:layout_margin="@dimen/margin"
-        android:layout_below="@+id/btnShowHistory"
+        android:layout_below="@+id/headerSearch"
         />
 
     <androidx.recyclerview.widget.RecyclerView
@@ -75,8 +71,17 @@
         android:layout_marginEnd="@dimen/margin"
         android:padding="@dimen/pading"
         android:layout_below="@+id/txtvNameSearch"
+        android:layout_above="@+id/btnShowHistory"
         />
 
 
+    <Button
+        android:id="@+id/btnShowHistory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin"
+        android:text="Historial"
+       android:layout_alignParentBottom="true"
+        />
 
 </RelativeLayout>

@@ -69,4 +69,8 @@ class ItemHistoryFragment(val mainViewModel: MainActivityViewModel) : BottomShee
         super.onDestroyView()
         _binding = null
     }
+
+    companion object {
+        const val TAG = "ItemHistoryFragment"
+    }
 }

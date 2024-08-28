@@ -1,10 +1,14 @@
 package com.flexicode.testmecate.View
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
+import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodManager
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.flexicode.testmecate.Models.UserData
@@ -27,6 +31,18 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         binding.btnSearch.setOnClickListener(this)
         binding.btnShowHistory.setOnClickListener(this)
+
+
+        binding.edtSearch.setOnEditorActionListener { v, actionId, event ->
+
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
+                mainViewModel.searchtLastName(binding.edtSearch.text.toString())
+                hideKeyboard()
+                true
+            } else {
+                false
+            }
+        }
         observerViewModel()
         setContentView(binding.root)
     }
@@ -49,14 +65,22 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                         }
                     }
                     "history"->{
-                        val bottomSheet = ItemHistoryFragment(mainViewModel)
-                        bottomSheet.show(supportFragmentManager, bottomSheet.tag)
+                        if (supportFragmentManager.findFragmentByTag(ItemHistoryFragment.TAG) == null) {
+                            val bottomSheet = ItemHistoryFragment(mainViewModel)
+                            bottomSheet.show(supportFragmentManager, ItemHistoryFragment.TAG)
+                        }
                     }
                 }
             }
         }
     }
-
+    fun hideKeyboard() {
+        val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        val view = currentFocus
+        view?.let {
+            imm.hideSoftInputFromWindow(it.windowToken, 0)
+        }
+    }
     private fun updateUI(title: String) {
         binding.txtvNameSearch.text = title
         binding.edtSearch.clearFocus()
@@ -87,10 +111,12 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         when (view.id) {
 
             R.id.btnSearch -> {
+                hideKeyboard()
                 mainViewModel.searchtLastName(binding.edtSearch.text.toString())
             }
 
             R.id.btnShowHistory -> {
+                hideKeyboard()
                 mainViewModel.showHistory()
             }
         }
