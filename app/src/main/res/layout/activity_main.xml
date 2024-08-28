@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="@dimen/margin"
+    tools:context=".View.MainActivity">
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/headerSearch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin"
+        android:padding="@dimen/pading"
+        app:cardCornerRadius="@dimen/cornerCard"
+        app:cardElevation="@dimen/cardview_default_elevation"
+        >
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="@dimen/margin"
+            android:gravity="center_vertical"
+            >
+            <EditText
+                android:id="@+id/edtSearch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/pading"
+                android:layout_marginEnd="@dimen/margin"
+                android:hint="Buscar..."
+                android:layout_toStartOf="@+id/btnSearch"
+                />
+
+            <ImageView
+                android:id="@+id/btnSearch"
+                android:layout_width="@dimen/button_size"
+                android:layout_height="@dimen/button_size"
+                android:src="@drawable/ic_search"
+                android:layout_alignParentEnd="true"
+                />
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <Button
+        android:id="@+id/btnShowHistory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Historial"
+        android:layout_below="@+id/headerSearch"
+        />
+
+    <TextView
+        android:id="@+id/txtvNameSearch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/textTitle"
+        android:padding="@dimen/pading"
+        android:layout_margin="@dimen/margin"
+        android:layout_below="@+id/btnShowHistory"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcvResultSearch"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="@dimen/margin"
+        android:layout_marginEnd="@dimen/margin"
+        android:padding="@dimen/pading"
+        android:layout_below="@+id/txtvNameSearch"
+        />
+
+
+
+</RelativeLayout>

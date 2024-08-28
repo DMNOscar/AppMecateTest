@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="@dimen/margin"
+    app:cardCornerRadius="@dimen/cornerCard">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin"
+        >
+
+
+        <TextView
+            android:id="@+id/textContry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="País"
+            android:textSize="@dimen/textNormal"
+            android:layout_marginEnd="@dimen/margin"
+            />
+
+        <TextView
+            android:id="@+id/txtvIdContry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/textContry"
+            android:layout_marginStart="@dimen/margin"
+            android:textStyle="bold"
+            />
+
+
+        <TextView
+            android:id="@+id/textProbability"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/textNormal"
+            android:text="Probabilidad"
+            android:layout_marginStart="@dimen/margin"
+            android:layout_toEndOf="@+id/txtvIdContry"
+            />
+    <TextView
+            android:id="@+id/txtvProbability"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/textNormal"
+            android:textStyle="bold"
+            android:layout_marginStart="@dimen/margin"
+            android:layout_toEndOf="@+id/textProbability"
+            />
+
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
